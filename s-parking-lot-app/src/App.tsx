@@ -1,24 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState, useMemo, useEffect} from 'react';
+
 import './App.scss';
+import { VehicleCount, Vehicle } from './types';
+import { parkingLot } from './helpers';
+import ParkingLotStatus from './components/ParkingLotStatus';
+
 
 function App() {
+  const [vehicles, setVehicles] = useState<Vehicle[]| undefined>();
+  const [openSpots, setOpenSpots] = useState<VehicleCount | undefined>();
+  
+  const occupiedSpots: VehicleCount | undefined = useMemo((): VehicleCount | undefined => { 
+    if( vehicles){
+      return parkingLot.getVehicleCount(vehicles)
+    }   
+  }, [vehicles])
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const vehiclesData = await parkingLot.getVehicles();
+        if(vehiclesData){
+            setVehicles(vehiclesData);
+            window.localStorage.setItem('vehicles', JSON.stringify(vehiclesData));
+        }            
+    }
+    fetchData()
+  },[])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+        const openSpotsData = await parkingLot.getAvailableSpots();
+        if(openSpotsData){
+            setOpenSpots(openSpotsData);
+            window.localStorage.setItem('openSpots', JSON.stringify(openSpotsData));
+        }            
+    }
+    fetchData()
+  },[])
+  
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+         <h1>Parking Lot</h1>
       </header>
+      <main>
+      <ParkingLotStatus title={"Spots Remaining"} vehicleCount={openSpots}/>
+      <ParkingLotStatus title={"vehicles Parked"} vehicleCount={occupiedSpots}/>
+      </main>
     </div>
   );
 }
