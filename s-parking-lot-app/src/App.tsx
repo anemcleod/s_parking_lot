@@ -6,6 +6,7 @@ import { parkingLot } from './helpers';
 
 import ParkingLotStatus from './components/ParkingLotStatus';
 import VehiclesTable from './components/VehicleTable';
+import ParkingForm from './components/ParkingForm';
 
 
 function App() {
@@ -48,9 +49,21 @@ function App() {
       <main>
         <section>
           <ParkingLotStatus title={"Spots Remaining"} vehicleCount={openSpots}/>
-          <ParkingLotStatus title={"vehicles Parked"} vehicleCount={occupiedSpots}/>
+          <ParkingLotStatus title={"Vehicles Parked"} vehicleCount={occupiedSpots}/>
         </section>
-        <VehiclesTable vehicles={vehicles} setVehicles={setVehicles} setOpenSpots={setOpenSpots}/>
+        <section>
+          <ParkingForm 
+            vehicles={vehicles}
+            openSpots={openSpots}
+            setVehicles={setVehicles} 
+            setOpenSpots={setOpenSpots}/>
+        </section>
+        <section>
+          <VehiclesTable 
+            vehicles={vehicles}
+            setVehicles={setVehicles} 
+            setOpenSpots={setOpenSpots}/>
+        </section>  
       </main>
     </div>
   );

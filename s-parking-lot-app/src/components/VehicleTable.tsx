@@ -17,7 +17,8 @@ const VehiclesTable = ({ vehicles, setVehicles, setOpenSpots }: VehiclesTablePro
         //remove vehicle and update state & localStorage
         const updatedVehicles = vehicles?.filter(e => e.id !== id);
         setVehicles(updatedVehicles)
-
+        window.localStorage.setItem('vehicles', JSON.stringify(updatedVehicles));
+        
         // add additional parking spot and update state and local storage
         setOpenSpots((prevState)  => {
             if(prevState){
@@ -27,7 +28,6 @@ const VehiclesTable = ({ vehicles, setVehicles, setOpenSpots }: VehiclesTablePro
                 return copy
             }
         })
-        window.localStorage.setItem('vehicles', JSON.stringify(updatedVehicles));
         setRemoving(null)
       }
     }

@@ -34,7 +34,3 @@ export  interface ParkingLot {
     removeVehicle:(id: string) => Promise<string | undefined>;
     getVehicleCount:(vehicles: Vehicle[]) => VehicleCount 
 }
-
-
-// setVehicles: Dispatch<SetStateAction<Vehicle[]| undefined>>; 
-// setOpenSpots: Dispatch<SetStateAction<VehicleCount | undefined>>; 

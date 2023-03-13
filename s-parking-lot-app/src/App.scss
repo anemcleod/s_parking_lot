@@ -20,6 +20,12 @@ header {
   grid-template-columns: 5fr 1fr;
 }
 
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;;
+}
+
 .vehicleTable {
   padding: 0
 }
