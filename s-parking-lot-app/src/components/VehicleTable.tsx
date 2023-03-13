@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { Vehicle, VehicleCount, VehicleType, VehiclesType } from "../types";
+import { Dispatch, SetStateAction, useState } from 'react';
+import { Vehicle, VehicleCount, VehicleType, VehiclesType } from '../types';
 
-import { parkingLot } from "../helpers";
+import { parkingLot } from '../helpers';
 
 const VehiclesTable = ({ vehicles, setVehicles, setOpenSpots }: VehiclesTableProps) => {
     const [removing, setRemoving] = useState<string | null>(null);
@@ -33,9 +33,9 @@ const VehiclesTable = ({ vehicles, setVehicles, setOpenSpots }: VehiclesTablePro
     }
 
     return (
-        <table className=" container vehicleTable">
+        <table className=' container vehicleTable'>
             <thead >
-                <tr className="tableRows">
+                <tr className='tableRows'>
                     <th>Vehicle ID</th>
                     <th>Vehicle Type</th>
                     <th>Spot</th>
@@ -48,22 +48,21 @@ const VehiclesTable = ({ vehicles, setVehicles, setOpenSpots }: VehiclesTablePro
                 vehicles && vehicles.length ? vehicles.map(vehicle => {
                     const date = new Date(vehicle.createdAt).toString()
                     return (
-                        <tr className="tableRows" key={`key-${vehicle.id}`}>
-                            <td>{vehicle.id}</td>
-                            <td>{vehicle.type}</td>
-                            <td>{vehicle.spot}</td>
-                            <td>{date}</td>
+                        <tr className='tableRows' key={`key-${vehicle.id}`}>
+                            <td aria-label='vehicle Id'>{vehicle.id}</td>
+                            <td aria-label='vehicle type'>{vehicle.type}</td>
+                            <td aria-label='spot'>{vehicle.spot}</td>
+                            <td aria-label='parked'>{date}</td>
                             <td>
-                                {
-                                    removing === vehicle.id ? "Loading..." : (
-                                        <button onClick={()=>{
-                                            removeVehicle(vehicle.id, vehicle.type)
-                                        }}>
-                                            remove
-                                        </button>
-                                    )
-                                }
-                                
+                   
+                                <button 
+                                    style={{marginLeft: 'auto'}}
+                                    disabled={removing === vehicle.id}
+                                    onClick={()=>{
+                                        removeVehicle(vehicle.id, vehicle.type)
+                                    }}>
+                                    {removing === vehicle.id ? 'loading' : 'remove'}
+                                </button>     
                             </td>
                         </tr>
                     )

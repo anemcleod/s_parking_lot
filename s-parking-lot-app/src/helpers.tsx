@@ -66,6 +66,7 @@ export const parkingLot: ParkingLot = {
 
         }catch(error){
             console.log(error);
+            alert(error);
         }
     },
     removeVehicle: async(id: string): Promise<string | undefined> => {

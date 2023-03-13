@@ -4,10 +4,10 @@ const ParkingLotStatus = ({ title, vehicleCount }: ParkingLotStatusProps)=> {
     
     return (
         <div className='container'>
-            <h4>{title}</h4>
+            <h4 style={{textAlign: 'center'}}>{title}</h4>
             {
                 vehicleCount ? (
-                    <>
+                    <div className='count-container'>
                         <div className='vehicleCountContainer'>
                             <p>Cars:</p>
                             <p>{vehicleCount.cars} </p>
@@ -20,7 +20,7 @@ const ParkingLotStatus = ({ title, vehicleCount }: ParkingLotStatusProps)=> {
                             <p>Motorcycles:</p>
                             <p>{vehicleCount.motorcycles} </p>
                         </div>
-                    </>
+                    </div>
                 ): <p>No status available</p>
             }
         </div>

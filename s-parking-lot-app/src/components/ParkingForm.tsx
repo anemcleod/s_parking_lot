@@ -12,6 +12,7 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
             e.preventDefault();
             setIsLoading(true);
             if(type && id && openSpots && vehicles){
+                //REVIEW: ideally there would be a check for duplicate ids since ids are input manually
                 const addedVehicle = await parkingLot.addVehicle({id, type}, openSpots);
                 
                 //add vehicle and update state & localStorage
@@ -33,9 +34,11 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
            }
             
         } catch(error){
-            alert(error);
+            console.error(error)
         } finally{
             setIsLoading(false);
+            setId('');
+            setType('');
         }
         
         
@@ -66,18 +69,24 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
                     <option value='' disabled selected hidden>
                         Vehicle Type 
                     </option>
-                    <option value={VehicleType.Car}>
+                    <option 
+                        disabled={!(openSpots?.cars && openSpots.cars > 0)}
+                        value={VehicleType.Car}>
                         {VehicleType.Car}
                     </option>
-                    <option value={VehicleType.Motorcycle}>
+                    <option 
+                        disabled={!(openSpots?.motorcycles && openSpots.motorcycles > 0)}
+                        value={VehicleType.Motorcycle}>
                         {VehicleType.Motorcycle}
                     </option>
-                    <option value={VehicleType.Van}>
+                    <option
+                        disabled={!(openSpots?.vans && openSpots.vans > 0)} 
+                        value={VehicleType.Van}>
                         {VehicleType.Van}
                     </option>
                 </select>
-                <button>
-                    Add
+                <button disabled={isLoading}>
+                    {isLoading ? "loading": "add"}
                 </button>
             </div>           
         </form>

@@ -42,23 +42,23 @@ function App() {
   },[])
   
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
          <h1>Parking Lot</h1>
       </header>
-      <main>
-        <section>
-          <ParkingLotStatus title={"Spots Remaining"} vehicleCount={openSpots}/>
-          <ParkingLotStatus title={"Vehicles Parked"} vehicleCount={occupiedSpots}/>
+      <main style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <section className='section-container'>
+          <ParkingLotStatus title={'Spots Remaining'} vehicleCount={openSpots}/>
+          <ParkingLotStatus title={'Vehicles Parked'} vehicleCount={occupiedSpots}/>
         </section>
-        <section>
+        <section className='section-container'>
           <ParkingForm 
             vehicles={vehicles}
             openSpots={openSpots}
             setVehicles={setVehicles} 
             setOpenSpots={setOpenSpots}/>
         </section>
-        <section>
+        <section className='table-section'>
           <VehiclesTable 
             vehicles={vehicles}
             setVehicles={setVehicles} 
