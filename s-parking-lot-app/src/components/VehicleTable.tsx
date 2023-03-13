@@ -56,7 +56,6 @@ const VehiclesTable = ({ vehicles, setVehicles, setOpenSpots }: VehiclesTablePro
                             <td>
                    
                                 <button 
-                                    style={{marginLeft: 'auto'}}
                                     disabled={removing === vehicle.id}
                                     onClick={()=>{
                                         removeVehicle(vehicle.id, vehicle.type)

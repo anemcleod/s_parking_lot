@@ -46,7 +46,7 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
 
     return (
         <form 
-            className="container"
+            className='container'
             onSubmit={(e) =>{
                submitHandler(e);
         }}>
@@ -56,7 +56,7 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
                     type='text'
                     name='id'
                     value={id}
-                    placeholder="Vehicle ID"
+                    placeholder='Vehicle ID'
                     onChange={(e) => setId(e.target.value)}
                     required>
                 </input>
@@ -86,7 +86,7 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
                     </option>
                 </select>
                 <button disabled={isLoading}>
-                    {isLoading ? "loading": "add"}
+                    {isLoading ? 'loading': 'add'}
                 </button>
             </div>           
         </form>
