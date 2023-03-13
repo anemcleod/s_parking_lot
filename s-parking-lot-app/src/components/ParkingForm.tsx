@@ -12,7 +12,7 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
             e.preventDefault();
             setIsLoading(true);
             if(type !== 'default' && id && openSpots && vehicles){
-                //Check id already exists ids since ids are input manually
+                //Check if id already exists since ids are input manually
                 const duplicate = vehicles.find(e => e.id === id);
                 if(duplicate){
                     alert(`A vehicle with id ${id} already exists.`)

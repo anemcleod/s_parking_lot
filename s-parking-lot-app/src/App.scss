@@ -59,6 +59,30 @@ button {
   }
 }
 
+table thead {
+  display: none;
+}
+table td {
+  display: flex;
+}
+
+table td::before {
+  content: attr(aria-label);
+  font-weight: 600;
+  width: 120px;
+  min-width: 120px;
+  text-transform: capitalize;
+}
+
+tbody {
+  td {
+    border-bottom: $border;
+    padding: $padding-medium;
+  };
+  tr:last-child td:last-child {
+    border-bottom: none;
+  };
+}
 
 //---------- classes -------------
 .container {
@@ -119,21 +143,6 @@ select {
   padding: 0;
 }
 
-table thead {
-  display: none;
-}
-table td {
-  display: flex;
-}
-
-table td::before {
-  content: attr(aria-label);
-  font-weight: 600;
-  width: 120px;
-  min-width: 120px;
-  text-transform: capitalize;
-}
-
 thead .tableRows {
     text-align: center;
     border-bottom: $border;
@@ -142,16 +151,6 @@ thead .tableRows {
 
 .tableRows td:first-child{
   background-color: rgba($primary-color, 0.2);
-}
-
-tbody {
-  td {
-    border-bottom: $border;
-    padding: $padding-medium;
-  };
-  tr:last-child td:last-child {
-    border-bottom: none;
-  };
 }
 
 .section-container {
