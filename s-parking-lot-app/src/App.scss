@@ -30,7 +30,7 @@ body {
 }
 //--------- tags ----------
 header {
-  padding-left: 20px;
+  padding-left: $padding-large;
   border-bottom: $border;
 
 }
@@ -99,7 +99,6 @@ input, select {
   padding: $padding-small;
   border-radius: $border-radius-small;
   font-size: 1rem;
-  text-transform: capitalize;
 }
 
 select {
@@ -182,13 +181,12 @@ tbody {
       align-items: center;
       justify-content: center;
       border-top: $border;
-      border-left: $border;
       border-right: $border;
+      border-bottom: none;
       padding: $padding-medium;
     };
-    tr td:first-child, tr td:last-child {
+    td:last-child {
       border-right: none;
-      border-left: none;
     };
     tr:first-of-type {
       td {

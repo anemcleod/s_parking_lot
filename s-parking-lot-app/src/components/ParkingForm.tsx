@@ -4,15 +4,21 @@ import { parkingLot } from '../helpers';
 
 const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : ParkingFormProps) =>{
     const [id, setId] = useState<string>('');
-    const [type, setType] = useState<VehicleType | ''>('');
+    const [type, setType] = useState<VehicleType | 'default'>('default');
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const submitHandler = async (e:SyntheticEvent ) => {
         try {
             e.preventDefault();
             setIsLoading(true);
-            if(type && id && openSpots && vehicles){
-                //REVIEW: ideally there would be a check for duplicate ids since ids are input manually
+            if(type !== 'default' && id && openSpots && vehicles){
+                //Check id already exists ids since ids are input manually
+                const duplicate = vehicles.find(e => e.id === id);
+                if(duplicate){
+                    alert(`A vehicle with id ${id} already exists.`)
+                    throw new Error(`A vehicle with id ${id} already exists.`)
+                }
+
                 const addedVehicle = await parkingLot.addVehicle({id, type}, openSpots);
                 
                 //add vehicle and update state & localStorage
@@ -38,7 +44,7 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
         } finally{
             setIsLoading(false);
             setId('');
-            setType('');
+            setType('default');
         }
         
         
@@ -63,10 +69,10 @@ const ParkingForm = ({ openSpots, setVehicles, setOpenSpots, vehicles } : Parkin
 
                 <select 
                     name='type'
-                    defaultValue={type}
+                    value={type}
                     onChange={(e) => setType(e.target.value as VehicleType)}
                     required>
-                    <option value='' disabled selected hidden>
+                    <option value='default' disabled selected hidden>
                         Vehicle Type 
                     </option>
                     <option 
