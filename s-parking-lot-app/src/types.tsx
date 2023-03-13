@@ -17,7 +17,7 @@ export enum VehiclesType {
 }
 
 export interface Vehicle {
-    createdAt: Date;
+    createdAt: string;
     id: string;
     spot: string;
     type: VehicleType;

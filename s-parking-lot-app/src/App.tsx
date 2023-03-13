@@ -3,7 +3,9 @@ import { useState, useMemo, useEffect} from 'react';
 import './App.scss';
 import { VehicleCount, Vehicle } from './types';
 import { parkingLot } from './helpers';
+
 import ParkingLotStatus from './components/ParkingLotStatus';
+import VehiclesTable from './components/VehicleTable';
 
 
 function App() {
@@ -44,8 +46,11 @@ function App() {
          <h1>Parking Lot</h1>
       </header>
       <main>
-      <ParkingLotStatus title={"Spots Remaining"} vehicleCount={openSpots}/>
-      <ParkingLotStatus title={"vehicles Parked"} vehicleCount={occupiedSpots}/>
+        <section>
+          <ParkingLotStatus title={"Spots Remaining"} vehicleCount={openSpots}/>
+          <ParkingLotStatus title={"vehicles Parked"} vehicleCount={occupiedSpots}/>
+        </section>
+        <VehiclesTable vehicles={vehicles} setVehicles={setVehicles} setOpenSpots={setOpenSpots}/>
       </main>
     </div>
   );

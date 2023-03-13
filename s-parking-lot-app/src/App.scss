@@ -20,4 +20,27 @@ header {
   grid-template-columns: 5fr 1fr;
 }
 
+.vehicleTable {
+  padding: 0
+}
+
+thead .tableRows {
+    text-align: center;
+    border-bottom: 1px solid gray;
+    padding: 15px 0;
+}
+
+.tableRows {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+tbody {
+  td {
+    border: 1px solid gray;
+    padding: 15px;
+  }
+}
+
 
