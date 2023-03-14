@@ -8,7 +8,7 @@ const VehiclesTable = ({ vehicles, setVehicles, setOpenSpots }: VehiclesTablePro
 
     const removeVehicle = async (id: string, type: VehicleType) => {
       try {
-        //since it doesn't update a database this call limited
+        //since it doesn't update a database this call will fail for vehicles added after original 3
         setRemoving(id);
         await parkingLot.removeVehicle(id);
       } catch(error){

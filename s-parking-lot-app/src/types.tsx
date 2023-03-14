@@ -10,6 +10,7 @@ export enum VehicleType {
     Van = "van"
 }
 
+//useful when accessing vehicle count by Vehicle type
 export enum VehiclesType {
     car = "cars",
     motorcycle = "motorcycles",

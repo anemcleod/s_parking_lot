@@ -20,7 +20,9 @@ export const parkingLot: ParkingLot = {
         //if no local storage get from api and return 
 
         const response = await fetch('https://us-central1-sealed-dev.cloudfunctions.net/take-home-mock/lot/available');
-        return await response.json();
+        if(response.status === 200){
+            return await response.json();
+        }
 
         } catch(error){
             console.error(error);
@@ -38,7 +40,9 @@ export const parkingLot: ParkingLot = {
         //if no local storage get from api and return 
 
         const response = await fetch('https://us-central1-sealed-dev.cloudfunctions.net/take-home-mock/lot/parked');
-        return await response.json();
+        if(response.status === 200){
+            return await response.json();
+        }
 
         } catch(error){
             console.error(error);
